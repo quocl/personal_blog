@@ -1,0 +1,119 @@
+@import "twitter/bootstrap/bootstrap";
+//body { padding-top: 100px; }
+
+@import "twitter/bootstrap/responsive";
+
+// Set the correct sprite paths
+@iconSpritePath: asset-path('twitter/bootstrap/glyphicons-halflings.png');
+@iconWhiteSpritePath: asset-path('twitter/bootstrap/glyphicons-halflings-white.png');
+
+// Set the Font Awesome (Font Awesome is default. You can disable by commenting below lines)
+@fontAwesomeEotPath: asset-path('fontawesome-webfont.eot');
+@fontAwesomeWoffPath: asset-path('fontawesome-webfont.woff');
+@fontAwesomeTtfPath: asset-path('fontawesome-webfont.ttf');
+@fontAwesomeSvgzPath: asset-path('fontawesome-webfont.svgz');
+@fontAwesomeSvgPath: asset-path('fontawesome-webfont.svg');
+
+// Font Awesome
+@import "fontawesome";
+
+// Your custom LESS stylesheets goes here
+//
+// Since bootstrap was imported above you have access to its mixins which
+// you may use and inherit here
+//
+// If you'd like to override bootstrap's own variables, you can do so here as well
+// See http://twitter.github.com/bootstrap/less.html for their names and documentation
+//
+// Example:
+// @linkColor: #ff0000;
+
+body{
+  padding-top: 20px;
+  background-color: #c0c0c0;
+  font-size: 17px;
+  font-family: 'Lora', Georgia, "Times New Roman", Times;
+}
+
+a{
+  color: @black;
+}
+
+a:hover{
+  color: @blue;
+}
+
+pre{
+  border: none;
+  font-size: 17px;
+  font-family: 'Lora', Georgia, "Times New Roman", Times;
+  line-height: 1.625;
+  color: #000;
+  background-color: @white;
+  word-break: normal;
+  padding: 0px;
+}
+
+.comment > pre {
+  font-size: 14px;
+  padding: 10px;
+  margin: 10px;
+  border: 1px solid #dfdfe0;
+  background-color: #fafafa;
+}
+
+.top-bar{
+  padding-top: 20px;
+  background-color: #dfdfef;
+
+}
+
+
+.banner{
+  position: relative;
+  width:100%;
+  height:300px;
+  //border: 1px solid #0f0f0f;
+  background-image: url("/images/sky.jpg");
+  background-size: 100% 300px;
+  margin-top: 20px;
+}
+
+.subnav{
+  background-color: #d0d0d0;
+}
+
+.nav {
+  margin-bottom: 0;
+}
+
+.nav-tabs > li {
+  border-right: 1px solid #c0c0c0;
+}
+
+.body {
+  position: relative;
+  background-color: @white;
+  padding: 25px;
+  padding-bottom: 200px;
+}
+
+.blog-body{
+  position: relative;
+  padding-left:10px;
+  padding-top: 10px;
+  margin-bottom: 200px;
+}
+
+.blog-footer{
+  position:relative;
+  width: 100%;
+  height: 80px;
+  background-color: #efefef;
+  padding-top: 50px;
+  text-align: center;
+  bottom:0px;
+}
+
+
+
