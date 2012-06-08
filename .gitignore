@@ -17,3 +17,5 @@
 lor
 .project
 *~
+.bundle/
+.rvmrc
