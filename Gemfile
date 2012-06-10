@@ -22,6 +22,7 @@ group :assets do
   gem 'twitter-bootstrap-rails'
 end
 
+gem 'tinymce-rails'
 gem 'jquery-rails'
 gem 'will_paginate', '~> 3.0'
 
