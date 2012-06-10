@@ -1,3 +1,4 @@
+<%= tinymce %>
 <%- model_class = @post.class -%>
 
 	<p>
@@ -7,8 +8,8 @@
 		<b><%= "Posted on " + @post.created_at.strftime("%a,1 %b %d %Y") %></b>
 	</p>
 	<p>
-	       <pre><%= @post.content %></pre>
-	  		<hr />
+	    <pre><%= raw(@post.content) %></pre>
+	  	<hr />
 	</p>
 	<h3><%= "Comments" %></h3><br />
 	<% @post.comments.each do |comment|%>
