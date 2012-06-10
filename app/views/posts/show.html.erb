@@ -23,7 +23,8 @@
 	<%end %>
 
 	<!-- form to make a comment-->
-	<b><%= "Create a comment:"%></b>
+	<b><%= "Create a comment:"%></b><br />
+	<div class="well">
 	<%= form_for ([@post, Comment.new]) do |f| %>
 		  <div class="control-group">
 		    <%= f.label :name, :class => 'control-label' %>
@@ -48,6 +49,7 @@
 		</div>
 			<%= f.submit nil, :class => 'btn btn-small' %>
 	<% end %>
+	</div>
 	<div class="form-actions">
 	  <%= link_to " Edit Post",
 	              edit_post_path(@post), :class => 'btn icon-edit' %>
