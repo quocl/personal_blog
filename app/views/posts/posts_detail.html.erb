@@ -24,5 +24,6 @@
 
 <%= will_paginate @posts %>
 
-
-<%= link_to " New Blog Post", new_post_path, :class=> "btn btn-primary icon-pencil"%>
+<% if user_signed_in? %>
+	<%= link_to " New Blog Post", new_post_path, :class=> "btn btn-primary icon-pencil"%>
+<% end %>

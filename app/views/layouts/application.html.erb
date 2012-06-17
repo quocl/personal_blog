@@ -41,7 +41,9 @@
 								<li><%= link_to "Archive", posts_path %></li>
 							<%end%>
 					        <li><%= link_to "Blog", posts_detail_path%></li>
-					        <li><%= link_to "Create Post", new_post_path%></li> 
+					        <% if user_signed_in? %>
+					        	<li><%= link_to "Create Post", new_post_path%></li>
+					        <% end %> 
 						</ul>
 					</div>
 					
