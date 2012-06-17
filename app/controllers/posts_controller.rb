@@ -1,6 +1,7 @@
 class PostsController < ApplicationController
-  helper_method :sort_column, :sort_direction
+  before_filter :authenticate_user!, :except => [:show, :index, :posts_detail]
   
+  helper_method :sort_column, :sort_direction
   # GET /posts
   # GET /posts.json
   def index
