@@ -1,6 +1,5 @@
 class PostsController < ApplicationController
-  before_filter :authenticate_user!, :except => [:show, :index, :posts_detail]
-  
+  before_filter :authenticate_user!, :except => [:show, :index, :posts_detail] 
   helper_method :sort_column, :sort_direction
   # GET /posts
   # GET /posts.json
@@ -43,7 +42,7 @@ class PostsController < ApplicationController
   # POST /posts
   # POST /posts.json
   def create
-    @post = current_user.posts.build(params[:product])
+    @post = current_user.posts.new(params[:post])
     respond_to do |format|
       if @post.save
         format.html { redirect_to @post, notice: 'Post was successfully created.' }
@@ -75,8 +74,9 @@ class PostsController < ApplicationController
   # DELETE /posts/1.json
   def destroy
     @post = Post.find(params[:id])
-    @post.destroy
-
+    if current_user.id == @post.user.id
+      @post.destroy
+    end
     respond_to do |format|
       format.html { redirect_to posts_url }
       format.json { head :no_content }
