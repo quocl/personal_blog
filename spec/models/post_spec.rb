@@ -6,7 +6,7 @@ describe Post do
       @post = FactoryGirl.create(:post)
     end
     
-    [:title, :content].each do |field|
+    [:title, :content, :user].each do |field|
       it "should validate presence of #{field}" do
         @post.should validate_presence_of(field)
       end
