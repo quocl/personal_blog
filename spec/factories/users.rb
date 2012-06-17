@@ -4,5 +4,7 @@ FactoryGirl.define do
     user.password  "password"
     user.password_confirmation  "password"
     user.username  "username"
+    user.first_name "First"
+    user.last_name "Last"
   end
 end
