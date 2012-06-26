@@ -42,19 +42,30 @@ describe PostsController do
       it "should assigns all posts" do
         assigns[:posts].should eq(Post.all)
       end
+    end
+    
+    describe 'GET new' do
+      it "should not be able to create an un-saved post" do
+        get :new
+        response.should redirect_to(user_session_path)  
+      end
     end  
   end
   
   describe "Login" do
     let!(:user){FactoryGirl.create(:user)}
     before(:each) do
-      
+      sign_in user
     end
-    
+      
+    after(:each) do
+      sign_out user
+    end
+  
     describe "GET new" do
-      it "should create a non-saved post" do
-        get :new
-        
+      
+      it "should create a un-saved post" do
+        expect{get :new}.to change{Post.count}.by(0)
       end
     end
   end
