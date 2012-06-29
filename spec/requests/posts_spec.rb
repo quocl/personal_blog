@@ -26,12 +26,14 @@ describe "Posts" do
     let!(:user){FactoryGirl.create(:user)}
     before(:each) do
       login_as user, :scope => :user
-      visit '/posts'
     end
     after(:each) do
       logout(user)
     end
     describe "GET /posts" do
+      before(:each) do
+        visit '/posts'
+      end
       it "should get posts" do
         current_path.should eq("/posts")
       end
@@ -39,6 +41,19 @@ describe "Posts" do
         it "should have content \"#{field}\"" do
             page.should have_content(field)    
         end
+      end
+    end
+    
+    describe "POST /posts" do
+      it "should allow login user to create a blog post" do
+        visit '/home'
+        click_on("Create Post")
+        page.should have_content("New Post")
+        current_path.should eq("/posts/new")
+        fill_in "Title", :with => "Title"
+        fill_in "Content", :with => "content"
+        click_button "Create Post"
+        current_path.should eq("/posts/#{Post.last.id}")
       end
     end
   end
