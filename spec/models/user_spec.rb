@@ -10,7 +10,7 @@ describe User do
       end      
     end
     
-    [:username, :email, :password].each do |field|
+    [:username, :email, :password, :first_name, :last_name].each do |field|
       it "should validate presence of #{field}" do
         user.should validate_presence_of(field)
       end

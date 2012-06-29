@@ -10,5 +10,5 @@ class User < ActiveRecord::Base
   # attr_accessible :title, :body
   has_many :posts, :dependent => :destroy
   validates :email, :username, :uniqueness => true
-  validates :username, :presence => true
+  validates :username, :email, :first_name, :last_name, :presence => true
 end
