@@ -51,7 +51,7 @@
 	<% end %>
 	</div>
 	<div class="form-actions">
-	 <% if user_signed_in? %>
+	 <% if user_signed_in? and @post.user == current_user %>
 	  <%= link_to " Edit Post",
 	              edit_post_path(@post), :class => 'btn icon-edit' %>
 	  <%= link_to " Delete Post",
