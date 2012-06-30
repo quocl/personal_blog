@@ -36,7 +36,11 @@ class PostsController < ApplicationController
 
   # GET /posts/1/edit
   def edit
-    @post = Post.find(params[:id])
+    if Post.find(params[:id]).user == current_user
+      @post = Post.find(params[:id])    
+    else
+      redirect_to Post.find(params[:id]), notice: 'This is not your post, therefore you cannot edit'
+    end
   end
 
   # POST /posts
@@ -58,7 +62,6 @@ class PostsController < ApplicationController
   # PUT /posts/1.json
   def update
     @post = Post.find(params[:id])
-
     respond_to do |format|
       if @post.update_attributes(params[:post])
         format.html { redirect_to @post, notice: 'Post was successfully updated.' }
