@@ -21,7 +21,11 @@ describe "User" do
   describe "sign out" do
     it "should let user to sign out" do
       login_as user, :scope => :user
-      #page.should have_content("Welcome #{user.first_name} #{user.last_name}")
+      visit "/home" 
+      page.should have_content("Welcome #{user.first_name} #{user.last_name}")
+      page.should have_xpath("//a", :text => "Sign out")
+      page.find(:xpath, "//a[@href='/users/sign_out']").click
+      page.should_not have_content("Welcome #{user.first_name} #{user.last_name}")
     end
   end
   
