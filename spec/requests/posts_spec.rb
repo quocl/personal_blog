@@ -57,32 +57,47 @@ describe "Posts" do
       end
     end
     
-    describe "GET edit" do
+    describe "modify post" do
       let!(:post){FactoryGirl.create(:post, :user => user)}
-      it "should allow user to edit his own post" do
-        visit "/posts/#{post.id}"
-        click_link("Edit Post")
-        current_path.should eq("/posts/#{post.id}/edit")
+      describe "GET edit" do
+        it "should allow user to edit his own post" do
+          visit "/posts/#{post.id}"
+          click_link("Edit Post")
+          current_path.should eq("/posts/#{post.id}/edit")
+        end
+        
+        it "should not let a user edit a post that is not his" do
+          user2 = FactoryGirl.create(:user, :username => "other", :email => "other@other.com")
+          post2 = FactoryGirl.create(:post, :title => "Some other", :user => user2)
+          visit "/posts/#{post2.id}"
+          page.should_not have_content("Edit Post")
+        end
       end
       
-      it "should not let a user edit a post that is not his" do
-        user2 = FactoryGirl.create(:user, :username => "other", :email => "other@other.com")
-        post2 = FactoryGirl.create(:post, :title => "Some other", :user => user2)
-        visit "/posts/#{post2.id}"
-        page.should_not have_content("Edit Post")
+      describe "PUT update" do
+        it "should allow user to save change to his own post" do
+          visit "/posts/#{post.id}/edit"
+          current_path.should eq("/posts/#{post.id}/edit")
+          fill_in("Title", :with => "Some title")
+          fill_in("Content", :with => "Some content")
+          click_on "Update Post"
+          current_path.should eq("/posts/#{post.id}")
+        end      
       end
-    end
-    
-    describe "PUT update" do
-      let!(:post){FactoryGirl.create(:post, :user => user)}
-      it "should allow user to save change to his own post" do
-        visit "/posts/#{post.id}/edit"
-        current_path.should eq("/posts/#{post.id}/edit")
-        fill_in("Title", :with => "Some title")
-        fill_in("Content", :with => "Some content")
-        click_on "Update Post"
-        current_path.should eq("/posts/#{post.id}")
-      end      
+      
+      describe "DESTROY delete" do
+        it "should let owner destroy his post" do
+          visit "/posts/#{post.id}"
+          expect{click_on("Delete Post")}.to change{Post.count}.by(-1)
+        end
+        
+        it "should not let user to destroy post that is not his" do
+          other_user = FactoryGirl.create(:user, :email => "other@other.com", :username => "other")
+          other_post = FactoryGirl.create(:post, :title => "other title", :user => other_user)
+          visit "/posts/#{other_post.id}"
+          page.should_not have_content("Delete Post")
+        end
+      end
     end
   end
 end
