@@ -66,6 +66,7 @@ describe PostsController do
       
       it "should create a un-saved post" do
         expect{get :new}.to change{Post.count}.by(0)
+        assigns[:post].should_not be_persisted
       end
     end
   end
