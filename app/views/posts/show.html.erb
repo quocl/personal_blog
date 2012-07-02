@@ -11,19 +11,7 @@
 	    <pre><%= raw(@post.content) %></pre>
 	  	<hr />
 	</p>
-	<h3><%= "Comments" %></h3><br />
-	<% @post.comments.each do |comment|%>
-		<b><%= "On #{comment.created_at.strftime("%a, %b %d %Y")},"%></b>
-		<b><%= " #{comment.name} said: "%></b>
-
-		<div class="comment">
-			<pre><%= comment.body%></pre>
-		</div>
-		<br />
-	<%end %>
-
-	<!-- form to make a comment-->
-	<b><%= "Create a comment:"%></b><br />
+	<b><%= "Wanna say something?"%></b><br /><br />
 	<div class="well">
 	<%= form_for ([@post, Comment.new]) do |f| %>
 		  <div class="control-group">
@@ -51,6 +39,19 @@
 			<%= f.submit nil, :class => 'btn btn-small' %>
 	<% end %>
 	</div>
+	<h3><%= "Comments" %></h3><br />
+	<% @post.comments.each do |comment|%>
+		<b><%= "On #{comment.created_at.strftime("%a, %b %d %Y")},"%></b>
+		<b><%= " #{comment.name} said: "%></b>
+
+		<div class="comment">
+			<pre><%= comment.body%></pre>
+		</div>
+		<br />
+	<%end %>
+
+	<!-- form to make a comment-->
+	
 	<div class="form-actions">
 	 <% if user_signed_in? and @post.user == current_user %>
 	  <%= link_to " Edit Post",

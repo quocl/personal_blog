@@ -50,9 +50,23 @@
 				</div>
 			</div>
 			<div class="body">
-				<div class="row">
-					<div class="span8">
-						<%=  yield %>
+				<div class="container">
+					<div class="row">
+						<div class="span8">
+							<%=  yield %>
+						</div>
+						<div class="span4">
+							 <h3><%= "Recent Posts"%></h3> <br />
+							 <% (1..5).each do |id|  %>
+							 	<% if id <= Post.count %>
+							 		<u><%= link_to Post.find(id).title, post_path(id) %></u>
+							 		<br />
+							 	<% end %>
+							 <% end %>
+							 		
+							 
+							
+						</div>
 					</div>
 				</div>
 			</div>			

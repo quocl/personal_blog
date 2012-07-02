@@ -24,6 +24,8 @@ describe "User" do
       visit "/home" 
       page.should have_content("Welcome #{user.first_name} #{user.last_name}")
       page.should have_xpath("//a", :text => "Sign out")
+      #click_link ("Welcome #{user.first_name} #{user.last_name}")
+      #click_link ("Sign out")
       page.find(:xpath, "//a[@href='/users/sign_out']").click # The text "Sign out" is associated with destroy_user_session_path. 
                                                               # Run rake routes to find the path go with it, which is /users/sign_out     
       page.should_not have_content("Welcome #{user.first_name} #{user.last_name}")
