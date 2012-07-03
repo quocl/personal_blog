@@ -27,7 +27,6 @@
 					</ul>
 				<% end %>
 			</div>
-			
 		</div>
 	</div>
 		<div class="container">
@@ -56,16 +55,16 @@
 							<%=  yield %>
 						</div>
 						<div class="span4">
+							<ul class="unstyled">
+								<li>
 							 <h3><%= "Recent Posts"%></h3> <br />
+							 	</li>
 							 <% (1..5).each do |id|  %>
 							 	<% if id <= Post.count %>
-							 		<u><%= link_to Post.find(id).title, post_path(id) %></u>
-							 		<br />
+							 		<li><u><%= link_to Post.find(id).title, post_path(id) %></u></li>
 							 	<% end %>
 							 <% end %>
-							 		
-							 
-							
+							 </ul>	
 						</div>
 					</div>
 				</div>
