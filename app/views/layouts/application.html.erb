@@ -54,8 +54,14 @@
 						<div class="span8">
 							<%=  yield %>
 						</div>
-						<div class="span4">
+						<div class="span4" id="right-side">
 							<ul class="unstyled">
+								<li class="well">
+									<% random = Random.rand(Quote.count) + 1%>
+									<%= Quote.find(random).saying%><br /><br />
+									<b><%= "- #{Quote.find(random).author}"%></b>
+								</li>
+								<hr />
 								<li>
 							 <h3><%= "Recent Posts"%></h3> <br />
 							 	</li>
