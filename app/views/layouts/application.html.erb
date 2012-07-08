@@ -34,7 +34,7 @@
 				<div class="span12">
 					<div class="banner"></div>					
 					<div class="subnav">
-						<ul class="nav nav-tabs">
+						<ul class="nav nav-pills">
 							<li><%= link_to "About me" %></li>
 							<%if Post.count > 0%>
 								<li><%= link_to "Archive", posts_path %></li>
@@ -65,9 +65,9 @@
 								<li>
 							 <h3><%= "Recent Posts"%></h3> <br />
 							 	</li>
-							 <% (1..5).each do |id|  %>
-							 	<% if id <= Post.count %>
-							 		<li><u><%= link_to Post.find(id).title, post_path(id) %></u></li>
+							 <% (0..4).each do |id|  %>
+							 	<% if id < Post.count %>
+							 		<li><u><%= link_to Post.find(Post.count - id).title, post_path(Post.count - id) %></u></li>
 							 	<% end %>
 							 <% end %>
 							 </ul>	
