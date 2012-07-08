@@ -32,8 +32,8 @@
 		<div class="container">
 			<div class="row">
 				<div class="span12">
-					<div class="banner"></div>					
-					<div class="subnav">
+					<div class="banner" id="shadow"></div>					
+					<div class="subnav" id="shadow">
 						<ul class="nav nav-pills">
 							<li><%= link_to "About me" %></li>
 							<%if Post.count > 0%>
@@ -48,7 +48,7 @@
 					
 				</div>
 			</div>
-			<div class="body">
+			<div class="body" id="shadow">
 				<div class="container">
 					<div class="row">
 						<div class="span8">
@@ -75,9 +75,9 @@
 					</div>
 				</div>
 			</div>			
-			<div class="blog-footer">			
+			<div class="blog-footer" id="shadow">			
 					Copyright 2012. All Rights Reserved.
 			</div>
-		</div>		
+		</div>
 </body>
 </html>
