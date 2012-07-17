@@ -3,11 +3,13 @@
 This is a blog engine for personal use.
 
 Usage:
-       <tt>git clone https://github.com/stryper/personal_blog.git</tt> 
+       git clone https://github.com/stryper/personal_blog.git
 
 Before deployment, go into <tt>app/models/user.rb</tt>  and uncomment the <tt>registerable</tt>  so
-that you can register for an account later on. After that, comment it again if 
+that you can register for an account later on. When you are done with deployment, got to 
+<tt>your_host_machine/users/sign_up</tt> and sign up for an account. After that, comment it again if 
 you don't want people to sign up and use your database.
+
 
 
 Rails is a web-application framework that includes everything needed to create
