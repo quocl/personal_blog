@@ -65,11 +65,9 @@
 								<li>
 							 <h3><%= "Recent Posts"%></h3> <br />
 							 	</li>
-							 <% (0..4).each do |id|  %>
-							 	<% if id < Post.count %>
-							 		<li><u><%= link_to Post.find(Post.count - id).title, post_path(Post.count - id) %></u></li>
-							 	<% end %>
-							 <% end %>
+							 <% Post.order("created_at DESC").limit(5).each do |post|%>
+							 	<li><u><%= link_to post.title, post_path(post) %></u></li>
+							 <% end%>
 							 </ul>	
 						</div>
 					</div>
