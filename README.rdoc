@@ -8,9 +8,10 @@ Usage:
 Before deployment, go into <tt>app/models/user.rb</tt>  and uncomment the <tt>registerable</tt>  so
 that you can register for an account later on. When you are done with deployment, got to 
 <tt>your_host_machine/users/sign_up</tt> and sign up for an account. After that, comment it again if 
-you don't want people to sign up and use your database.
+you don't want people to sign up and use your database. Go to <tt>your_host_machine/users/sign_in</tt>
+to sign in.
 
-
+======================================================================================
 
 Rails is a web-application framework that includes everything needed to create
 database-backed web applications according to the Model-View-Control pattern.
