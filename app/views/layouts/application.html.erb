@@ -1,77 +1,77 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>PersonalBlog</title>
+  <title>Yet another weblog</title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
 	<div class="navbar navbar-fixed-top">
-		<div class="navbar-inner">
-			<div class="container">
-				<a class="brand" href="#"> Somewhere in the cloud</a>
-				<% if user_signed_in? %>
-					<ul class="nav pull-right">
-						<li class="dropdown">
-       						<a class="dropdown-toggle" data-toggle="dropdown">
-       						Welcome <%= current_user.first_name + " "+ current_user.last_name%>
-       						<b class="caret"></b>
-       						</a>
-       						<ul class="dropdown-menu">
-       							<a href="#">
-       							<%= link_to "Sign out", destroy_user_session_path, :method => :delete%> 
-								</a>
-							</ul>
-						</li>
-					</ul>
-				<% end %>
-			</div>
-		</div>
+	<div class="navbar-inner">
+	<div class="container">
+		<a class="brand" href="#"> Somewhere in the cloud</a>
+		<% if user_signed_in? %>
+			<ul class="nav pull-right">
+			<li class="dropdown">
+       			<a class="dropdown-toggle" data-toggle="dropdown">
+       			Welcome <%= current_user.first_name + " "+ current_user.last_name%>
+       			<b class="caret"></b>
+       			</a>
+       		<ul class="dropdown-menu">
+       			<a href="#">
+       			<%= link_to "Sign out", destroy_user_session_path, :method => :delete%> 
+				</a>
+			</ul>
+			</li>
+			</ul>
+		<% end %>
 	</div>
-		<div class="container">
-			<div class="row">
-				<div class="span12">
-					<div class="banner" id="shadow"></div>					
-					<div class="subnav" id="shadow">
-						<ul class="nav nav-pills">
-							<li><%= link_to "About me" %></li>
-							<%if Post.count > 0%>
-								<li><%= link_to "Archive", posts_path %></li>
-							<%end%>
-					        <li><%= link_to "Blog", posts_detail_path%></li>
-					        <% if user_signed_in? %>
-					        	<li><%= link_to "Create Post", new_post_path%></li>
-					        <% end %> 
-						</ul>
-					</div>
-					
-				</div>
+	</div>
+	</div>
+	<div class="container">
+	<div class="row">
+		<div class="span12">
+		<div class="banner" id="shadow"></div>					
+			<div class="subnav" id="shadow">
+			<ul class="nav nav-pills">
+				<li><%= link_to "About me" %></li>
+					<%if Post.count > 0%>
+				<li><%= link_to "Archive", posts_path %></li>
+					<%end%>
+		        <li><%= link_to "Blog", posts_detail_path%></li>
+			        <% if user_signed_in? %>
+	        	<li><%= link_to "Create Post", new_post_path%></li>
+			        <% end %> 
+				</ul>
 			</div>
-			<div class="body" id="shadow">
-				<div class="container">
-					<div class="row">
-						<div class="span8">
-							<%=  yield %>
-						</div>
-						<div class="span4" id="right-side">
-							<ul class="unstyled">
-								<li class="well">
-									<% random = Random.rand(Quote.count) + 1%>
-									<%= Quote.find(random).saying%><br /><br />
-									<b><%= "- #{Quote.find(random).author}"%></b>
-								</li>
-								<hr />
-								<li>
-							 <h3><%= "Recent Posts"%></h3> <br />
-							 	</li>
-							 <% Post.order("created_at DESC").limit(5).each do |post|%>
-							 	<li><u><%= link_to post.title, post_path(post) %></u></li>
-							 <% end%>
-							 </ul>	
-						</div>
-					</div>
-				</div>
+					
+		</div>
+		</div>
+		<div class="body" id="shadow">
+			<div class="container">
+			<div class="row">
+			<div class="span8">
+				<%=  yield %>
+			</div>
+			<div class="span4" id="right-side">
+			<ul class="unstyled">
+				<li class="well">
+				<% random = Random.rand(Quote.count) + 1%>
+				<%= Quote.find(random).saying%><br /><br />
+				<b><%= "- #{Quote.find(random).author}"%></b>
+				</li>
+				<hr />
+				<li>
+				 <h3><%= "Recent Posts"%></h3> <br />
+				</li>
+				 <% Post.order("created_at DESC").limit(5).each do |post|%>
+				<li><u><%= link_to post.title, post_path(post) %></u></li>
+				<% end%>
+				/ul>	
+				/div>
+			</div>
+			</div>
 			</div>			
 			<div class="blog-footer" id="shadow">			
 					Copyright 2012. All Rights Reserved.
