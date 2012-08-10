@@ -5,7 +5,7 @@
 		<h2><%= @post.title %></h2>
 	</p>
 	<p>
-		<b><%= "Posted on " + @post.created_at.strftime("%a,1 %b %d %Y") + " by " + @post.user.username%></b>
+		<b><%= "Posted on " + @post.created_at.strftime("%b %d %Y") + " by " + @post.user.username%></b>
 	</p>
 	<p>
 	    <pre><%= raw(@post.content) %></pre>
