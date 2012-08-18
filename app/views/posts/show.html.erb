@@ -7,7 +7,7 @@
 		<b><%= "Posted on " + @post.created_at.strftime("%b %d %Y") + " by " + @post.user.username%></b>
 	</p>
 	<p>
-	    <%= raw(@post.content) %>
+	    <pre><%= raw(@post.content) %></pre>
 	  	<hr />
 	</p>
 	<b><%= "Wanna say something?"%></b><br/><br/>
