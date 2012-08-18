@@ -4,7 +4,7 @@
   <thead>
     <tr>
       <th><%= sortable 'title' %></th>
-      <th><%= sortable 'created_at' %></th>
+      <th><%= sortable 'created_at', "Posted on" %></th>
       <% if user_signed_in? %>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
       <% end %>

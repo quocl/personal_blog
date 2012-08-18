@@ -1,6 +1,5 @@
 <%= tinymce %>
 <%- model_class = @post.class -%>
-
 	<p>
 		<h2><%= @post.title %></h2>
 	</p>
@@ -8,28 +7,22 @@
 		<b><%= "Posted on " + @post.created_at.strftime("%b %d %Y") + " by " + @post.user.username%></b>
 	</p>
 	<p>
-	    <pre><%= raw(@post.content) %></pre>
+	    <%= raw(@post.content) %>
 	  	<hr />
 	</p>
-	<b><%= "Wanna say something?"%></b><br /><br />
+	<b><%= "Wanna say something?"%></b><br/><br/>
 	<div class="well">
 	<%= form_for ([@post, Comment.new]) do |f| %>
-		  <div class="control-group">
-		    <%= f.label :name, :class => 'control-label' %>
-		    
-		    <div class="controls">
-		      <%= f.text_field :name, :class => 'text_field' %> <%= "*"%>
-		      
-		    </div>
-		  </div>
-		  
-		  <div class="control-group">
-		    <%= f.label :email, :class => 'control-label' %>
-		    <div class="controls">
+		<div class="control-group">
+			<%= f.label :name, :class => 'control-label' %>
+		    <div class="controls"><%= f.text_field :name, :class => 'text_field' %> <%= "*"%></div>
+		</div>
+		<div class="control-group">
+		 	<%= f.label :email, :class => 'control-label' %>
+		<div class="controls">
 		      <%= f.email_field :email%><%= " *"%>
-		    </div>
-		  </div>
-			
+		</div>
+	    </div>	
 		<div class="control-group">
 			<%= f.label :body, :class => 'control-label' %>
 		    <div class="controls">
@@ -39,19 +32,17 @@
 			<%= f.submit nil, :class => 'btn btn-small' %>
 	<% end %>
 	</div>
-	<h3><%= "Comments" %></h3><br />
+	<p><h3><%= "Comments" %></h3></p>
 	<% @post.comments.each do |comment|%>
-		<b><%= "On #{comment.created_at.strftime("%a, %b %d %Y")},"%></b>
-		<b><%= " #{comment.name} said: "%></b>
-
-		<div class="comment">
-			<pre><%= comment.body%></pre>
-		</div>
-		<br />
+		<p>
+			<b><%= "On #{comment.created_at.strftime("%a, %b %d %Y")},"%></b>
+			<b><%= " #{comment.name} said: "%></b>
+			<div class="comment">
+				<pre><%= comment.body%></pre>
+			</div>
+		</p>
 	<%end %>
-
 	<!-- form to make a comment-->
-	
 	<div class="form-actions">
 	 <% if user_signed_in? and @post.user == current_user %>
 	  <%= link_to " Edit Post",

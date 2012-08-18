@@ -11,7 +11,7 @@ describe "Posts" do
         # Run the generator again with the --webrat flag if you want to use webrat methods/matchers
         current_path.should eq('/posts')
       end    
-      ["Title", "Created At"].each do |field|
+      ["Title", "Posted on"].each do |field|
         it "should show field \"#{field}\" of posts page" do
           page.should have_content(field)
         end
@@ -37,7 +37,7 @@ describe "Posts" do
       it "should get posts" do
         current_path.should eq("/posts")
       end
-      ["Title", "Created At", "Actions"].each do |field|
+      ["Title", "Posted on", "Actions"].each do |field|
         it "should have content \"#{field}\"" do
             page.should have_content(field)    
         end
