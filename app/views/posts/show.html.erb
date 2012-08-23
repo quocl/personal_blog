@@ -10,24 +10,20 @@
 	    <pre><%= raw(@post.content) %></pre>
 	  	<hr />
 	</p>
-	<b><%= "Wanna say something?"%></b><br/><br/>
-	<div class="well">
+	<a><b id="comment_headline"><%= "Wanna say something?"%></b></a><br/><br/>
+	<div class="well" id="comment">
 	<%= form_for ([@post, Comment.new]) do |f| %>
 		<div class="control-group">
 			<%= f.label :name, :class => 'control-label' %>
 		    <div class="controls"><%= f.text_field :name, :class => 'text_field' %> <%= "*"%></div>
 		</div>
 		<div class="control-group">
-		 	<%= f.label :email, :class => 'control-label' %>
-		<div class="controls">
-		      <%= f.email_field :email%><%= " *"%>
-		</div>
+			<%= f.label :email, :class => 'control-label' %>
+			<div class="controls"><%= f.email_field :email%><%= " *"%></div>
 	    </div>	
 		<div class="control-group">
 			<%= f.label :body, :class => 'control-label' %>
-		    <div class="controls">
-		      <%= f.text_area :body, :rows => 4, :style => "width:70%; resize: none", :class => 'text_area'%><%= " *"%>
-		    </div>
+		    <div class="controls"><%= f.text_area :body, :rows => 4, :style => "width:70%; resize: none", :class => 'text_area'%><%= " *"%></div>
 		</div>
 			<%= f.submit nil, :class => 'btn btn-small' %>
 	<% end %>
