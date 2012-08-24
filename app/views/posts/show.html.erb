@@ -10,7 +10,7 @@
 	    <pre><%= raw(@post.content) %></pre>
 	  	<hr />
 	</p>
-	<a><b id="comment_headline"><%= "Wanna say something?"%></b></a><br/><br/>
+	<a><b id="comment_headline"><%= "Wanna say something? Leave a comment."%></b></a><br/><br/>
 	<div class="well" id="comment">
 	<%= form_for ([@post, Comment.new]) do |f| %>
 		<div class="control-group">
