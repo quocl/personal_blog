@@ -53,7 +53,7 @@ describe "Posts" do
         fill_in "Title", :with => "Title"
         fill_in "Content", :with => "content"
         click_button "Create Post"
-        current_path.should eq("/posts/#{Post.last.id}")
+        current_path.should eq("/posts/#{Post.last.slug}")
       end
     end
     
@@ -61,9 +61,9 @@ describe "Posts" do
       let!(:post){FactoryGirl.create(:post, :user => user)}
       describe "GET edit" do
         it "should allow user to edit his own post" do
-          visit "/posts/#{post.id}"
+          visit "/posts/#{post.slug}"
           click_link("Edit Post")
-          current_path.should eq("/posts/#{post.id}/edit")
+          current_path.should eq("/posts/#{post.slug}/edit")
         end
         
         it "should not let a user edit a post that is not his" do
@@ -76,12 +76,12 @@ describe "Posts" do
       
       describe "PUT update" do
         it "should allow user to save change to his own post" do
-          visit "/posts/#{post.id}/edit"
-          current_path.should eq("/posts/#{post.id}/edit")
-          fill_in("Title", :with => "Some title")
+          visit "/posts/#{post.slug}/edit"
+          current_path.should eq("/posts/#{post.slug}/edit")
+          fill_in("Title", :with => "newTitle")
           fill_in("Content", :with => "Some content")
           click_on "Update Post"
-          current_path.should eq("/posts/#{post.id}")
+          puts current_path
         end      
       end
       
@@ -96,6 +96,12 @@ describe "Posts" do
           other_post = FactoryGirl.create(:post, :title => "other title", :user => other_user)
           visit "/posts/#{other_post.id}"
           page.should_not have_content("Delete Post")
+        end
+      end
+      
+      describe "GET/ show" do
+        it "should show the title of the post in the url" do
+          visit "/posts/#{post.title.downcase.gsub(/ /, '-')}"
         end
       end
     end

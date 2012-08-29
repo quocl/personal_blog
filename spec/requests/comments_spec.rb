@@ -9,7 +9,7 @@ describe "Comment" do
         fill_in field, :with => content
       end
       click_on("Create Comment")
-      current_path.should eq("/posts/#{post.id}")
+      current_path.should eq("/posts/#{post.slug}")
       ["someone said", "some comment"].each do |field|
         page.should have_content(field)        
       end
