@@ -68,6 +68,7 @@ GEM
       factory_girl (~> 3.3.0)
       railties (>= 3.0.0)
     ffi (1.0.11)
+    friendly_id (4.0.8)
     git (1.2.5)
     heroku (2.28.7)
       heroku-api (~> 0.2.6)
@@ -214,6 +215,7 @@ DEPENDENCIES
   database_cleaner
   devise
   factory_girl_rails
+  friendly_id
   heroku
   jquery-rails
   pg

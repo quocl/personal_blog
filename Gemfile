@@ -5,17 +5,9 @@ gem 'rails', '3.2.3'
 gem 'heroku'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
-
-group :development, :test do
-  gem 'sqlite3'
-end
-group :production do
-  gem 'pg'
-  gem 'thin'
-end
-
 gem 'therubyracer'
 gem 'devise'
+gem 'friendly_id'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -36,6 +28,7 @@ gem 'will_paginate', '~> 3.0'
 
 group :development, :test do
   gem 'rspec-rails'
+  gem 'sqlite3'
 end
 
 group :test do
@@ -46,6 +39,11 @@ group :test do
 	gem 'selenium'
 end
 
+
+group :production do
+  gem 'pg'
+  gem 'thin'
+end
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
