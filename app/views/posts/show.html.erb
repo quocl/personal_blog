@@ -1,4 +1,6 @@
-<%= tinymce %>
+<%content_for :title do %>
+	<%= @post.title%>
+<% end %>
 <%- model_class = @post.class -%>
 	<p>
 		<h2><%= @post.title %></h2>

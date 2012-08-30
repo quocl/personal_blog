@@ -1,7 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Yet another weblog</title>
+	<title>
+		<% if content_for?(:title) %>
+			<%=  yield :title%>
+		<% else %>
+			Yet another weblog
+		<% end %>
+	</title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
