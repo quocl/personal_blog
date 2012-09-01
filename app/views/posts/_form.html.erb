@@ -1,4 +1,3 @@
-<%= tinymce_assets %>
 
 <%= form_for @post, :html => { :class => 'form-horizontal' } do |f| %>
   <div class="control-group">
@@ -10,7 +9,7 @@
   <div class="control-group">
   		<%= f.label :content, :class => 'control-label'%>
    <div class="controls">
-    	<%= f.text_area :content, :class => "tinymce", :rows => 40, :style => "width:98%; resize: none;" %>
+    	<%= f.text_area :content, :class => "text_area", :rows => 40, :style => "width:98%; resize: none;" %>
     </div>
   </div>
 
