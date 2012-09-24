@@ -19,7 +19,7 @@ describe "Posts" do
       it "should not show \"Actions\" on posts page" do
         page.should_not have_content("Actions")  
       end
-    end  
+    end
   end
   
   describe "Signed in" do
@@ -104,6 +104,37 @@ describe "Posts" do
           visit "/posts/#{post.title.gsub(/ /, '%20')}"
           current_path.should eq("/posts/#{post.title.gsub(/ /, '%20')}")
         end
+      end
+      
+    end
+  end
+ 
+  describe "Tagging" do
+
+    describe "No posts" do
+      it "should have a section listing all tags" do
+        visit "/"
+        page.should have_content("Tags")
+      end
+    end
+    
+    describe "With Posts" do
+      let!(:post){FactoryGirl.create(:post)}
+      let!(:post_with_tag){FactoryGirl.create(:post, :user => post.user, :title => "Other title", :tag_list => ["tag1"])}
+      
+      it "should display posts' tags" do
+        visit "/"
+        page.should have_content("tag1")
+      end
+      
+      it "should direct to path that explicitly mentions tags when that tag is clicked" do
+        visit "/"
+        click_on "tag1"
+        current_path.should eq("/tags/tag1")
+      end
+      
+      it "should filter the posts based on the tags selected" do
+        pending "TODO"
       end
     end
   end
