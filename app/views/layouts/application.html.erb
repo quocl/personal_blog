@@ -8,9 +8,9 @@
 			<%= "Yet another weblog" %>
 		<% end %>
 	</title>
-  <%= stylesheet_link_tag    "application", :media => "all" %>
-  <%= javascript_include_tag "application" %>
-  <%= csrf_meta_tags %>
+	<%= stylesheet_link_tag    "application", :media => "all" %>
+	<%= javascript_include_tag "application" %>
+	<%= csrf_meta_tags %>
 </head>
 <body>
 	<div class="navbar navbar-fixed-top">
@@ -20,14 +20,14 @@
 		<% if user_signed_in? %>
 			<ul class="nav pull-right">
 			<li class="dropdown">
-       			<a class="dropdown-toggle" data-toggle="dropdown">
-       			Welcome <%= current_user.first_name + " "+ current_user.last_name%>
-       			<b class="caret"></b>
-       			</a>
-       		<ul class="dropdown-menu">
-       			<a href="#">
-       			<%= link_to "Sign out", destroy_user_session_path, :method => :delete%> 
-				</a>
+			<a class="dropdown-toggle" data-toggle="dropdown">
+				Welcome <%= current_user.first_name + " "+ current_user.last_name%>
+				<b class="caret"></b>
+			</a>
+			<ul class="dropdown-menu">
+			<a href="#">
+			<%= link_to "Sign out", destroy_user_session_path, :method => :delete%> 
+			</a>
 			</ul>
 			</li>
 			</ul>
@@ -45,13 +45,12 @@
 					<%if Post.count > 0%>
 				<li><%= link_to "Archive", posts_path %></li>
 					<%end%>
-		        <li><%= link_to "Blog", posts_detail_path%></li>
-			        <% if user_signed_in? %>
-	        	<li><%= link_to "Create Post", new_post_path%></li>
-			        <% end %> 
+				<li><%= link_to "Blog", posts_detail_path%></li>
+				<% if user_signed_in? %>
+					<li><%= link_to "Create Post", new_post_path%></li>
+				<% end %> 
 				</ul>
-			</div>
-					
+			</div>				
 		</div>
 		</div>
 		<div class="body" id="shadow">
@@ -71,9 +70,16 @@
 				<li>
 				 <p><h3><%= "Recent Posts"%></h3></p>
 				</li>
-				 <% Post.order("created_at DESC").limit(5).each do |post|%>
-				<p><li><u><%= link_to post.title, post_path(post) %></u></li></p>
+				<% Post.order("created_at DESC").limit(5).each do |post|%>
+					<p><li><u><%= link_to post.title, post_path(post) %></u></li></p>
 				<% end%>
+				<hr />
+				<li><h3><%= "Tags "%></h3></li>
+				<li id="tag_cloud">
+					<% tag_cloud Post.tag_counts, %w[s m l] do |tag, css_properties|%>
+						<%= link_to tag.name, tag_path(tag.name), :class => css_properties%>
+					<% end %>
+				</li>
 				</ul>	
 				</div>
 			</div>
