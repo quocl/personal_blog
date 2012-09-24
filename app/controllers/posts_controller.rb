@@ -4,8 +4,11 @@ class PostsController < ApplicationController
   # GET /posts
   # GET /posts.json
   def index
-    @posts = Post.order(sort_column + " " + sort_direction).paginate(:per_page => 10, :page => params[:page])
-
+		if params[:tag]
+			@posts = Post.tagged_with(params[:tag]).order(sort_column + " " + sort_direction).paginate(:per_page => 10, :page => params[:page])
+		else
+    	@posts = Post.order(sort_column + " " + sort_direction).paginate(:per_page => 10, :page => params[:page])
+		end
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @posts }
@@ -87,7 +90,11 @@ class PostsController < ApplicationController
   end
    
   def posts_detail
-    @posts = Post.paginate(:per_page => 5, :page => params[:page], :order => 'created_at DESC')
+		if params[:tag]
+			@posts = Post.tagged_with(params[:tag]).paginate(:per_page => 5, :page => params[:page], :order => 'created_at DESC')
+		else
+    	@posts = Post.paginate(:per_page => 5, :page => params[:page], :order => 'created_at DESC')
+		end
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @posts }

@@ -8,6 +8,7 @@ gem 'heroku'
 gem 'therubyracer'
 gem 'devise'
 gem 'friendly_id'
+gem 'acts-as-taggable-on'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -35,7 +36,6 @@ group :test do
   gem 'capybara'
   gem 'factory_girl_rails'
   gem 'database_cleaner'
-	gem 'selenium'
 end
 
 

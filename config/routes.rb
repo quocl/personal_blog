@@ -5,7 +5,7 @@ PersonalBlog::Application.routes.draw do
     resources :comments
   end
   get "/home" => "posts#posts_detail", :as => 'posts_detail'
-  
+	get 'tags/:tag', to: 'posts#posts_detail', as: :tag  
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
