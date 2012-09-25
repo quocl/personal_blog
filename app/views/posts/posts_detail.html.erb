@@ -9,7 +9,7 @@
 	</p>
 	<p>
 		<%= raw(truncate(post.content, :length => 250, :omission => "..." + link_to(" Read more", post_path(post)) ))%><br /><br />
-		<%= "Tags: "%>
+		<b><%= "Tags: "%></b>
 		<%= display_tags(post.tags)%><br />
 		<% if post.comments.count > 1 %>
 			<%= link_to "#{post.comments.count} Comments", post_path(post)%>

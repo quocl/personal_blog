@@ -8,7 +8,7 @@
 	<p>
 		<b><%= "Posted on " + @post.created_at.strftime("%b %d %Y") + " by " + @post.user.username%></b>
 	</p>
-	<p>	<%= "Tags: "%>
+	<p>	<b><%= "Tags: "%></b>
 		<%= display_tags(@post.tags) %>
 	</p>
 	<p>
