@@ -5,5 +5,8 @@ module ApplicationHelper
     link_to title, :sort => column, :direction => direction
   end
   
-  
+  def display_tags(tag_list)
+    # Display the tag list of a model in a nice way
+    raw tag_list.map{|t| link_to t.name, tag_path(t.name)}.join(", ")
+  end
 end

@@ -6,5 +6,5 @@ class Post < ActiveRecord::Base
   validates :title, :uniqueness => true
   has_many :comments, :dependent => :destroy
   belongs_to :user
-	acts_as_taggable
+  acts_as_taggable
 end
