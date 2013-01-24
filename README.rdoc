@@ -3,7 +3,7 @@
 This is a blog engine for personal use. You can grasp a copy of the source code, deploy it on your own and use it.
 
 1. To get the project, simply do:
-       git clone https://github.com/stryper/personal_blog.git
+       git clone https://github.com/qen37/personal_blog.git
 
 
 2. Before deployment, go into <tt>app/models/user.rb</tt>  and uncomment the <tt>registerable</tt>  so that you can register for an account when the app is up and running. 
