@@ -14,5 +14,11 @@ describe "Comment" do
         page.should have_content(field)        
       end
     end
+    
+    it "should not show comment block if not click on button \"Wanna say something\"" do
+      visit "/posts/#{post.id}"
+      page.should_not have_content("Create Comment")
+      page.should have_content("Wanna say something? Leave a comment")
+    end
   end
 end

@@ -15,7 +15,7 @@
 	    <pre><%= raw(@post.content) %></pre>
 	  	<hr />
 	</p>
-	<a href="#"><b id="comment_headline"><%= "Wanna say something? Leave a comment."%></b></a><br/><br/>
+	<button class="btn" id="comment_headline"><%="Wanna say something? Leave a comment."%></button><br/><br/>
 	<div class="well" id="comment">
 	<%= form_for ([@post, Comment.new]) do |f| %>
 		<div class="control-group">
