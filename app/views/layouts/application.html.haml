@@ -66,6 +66,10 @@
       .row
         .span10.offset1.blog-footer
           - if Time.now.year <= 2012
-            = "Copyright © 2012 qle. All Rights Reserved."
+            = "Copyright © 2012 quocle. All Rights Reserved."
           - else
-            = "Copyright © 2012 - #{Time.now.year} qle. All Rights Reserved."
+            = "Copyright © 2012 - #{Time.now.year}"
+            = link_to "quocle"
+            = ". All Rights Reserved."
+          = "Powered by "
+          = link_to "Ruby on Rails", "http://rubyonrails.org/"
