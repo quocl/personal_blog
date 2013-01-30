@@ -1,0 +1,24 @@
+- model_class = Post.new.class
+%table.table.table-striped
+  %thead
+    %tr
+      %th= sortable 'title'
+      %th= sortable 'created_at', "Posted on"
+      - if user_signed_in?
+        %th= t '.actions', :default => t("helpers.actions")
+  %tbody
+    - @posts.each do |post|
+      %tr
+        %td= link_to post.title, post_path(post)
+        %td= post.created_at.strftime("%b %d %Y")
+        %td
+          - if user_signed_in? and post.user == current_user
+            = link_to " Edit",                               |
+              edit_post_path(post), :class => 'btn btn-mini' |
+            -#
+            = link_to " Delete",                                                                              |
+              post_path(post),                                                                                |
+              :method => :delete,                                                                             |
+              :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')), |
+              :class => 'btn btn-mini btn-danger'                                                             |
+= will_paginate @posts
