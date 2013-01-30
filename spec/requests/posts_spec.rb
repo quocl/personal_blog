@@ -47,7 +47,7 @@ describe "Posts" do
     describe "POST /posts" do
       it "should allow login user to create a blog post" do
         visit '/home'
-        click_on("Create Post")
+        click_on("Write an entry")
         page.should have_content("New Post")
         current_path.should eq("/posts/new")
         fill_in "Title", :with => "Title"

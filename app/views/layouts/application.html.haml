@@ -1,0 +1,71 @@
+!!!
+%html
+  %head
+    %title
+      - if content_for?(:title)
+        = yield :title
+      - else
+        = "Yet another weblog"
+    = stylesheet_link_tag    "application", :media => "all"
+    = javascript_include_tag "application"
+    = csrf_meta_tags
+  %body
+    .navbar.navbar-fixed-top
+      .navbar-inner
+        .row
+          .offset2
+            .container
+              %a.brand{:href => "#"} Somewhere in the cloud             
+    .container
+      .row
+        .span10.offset1
+          .banner
+          #tool-bar.navbar.navbar-inner
+            %ul.nav
+              %li= link_to "About Me"
+              - if Post.count > 0
+                %li= link_to "Archive", posts_path
+                %li= link_to "Blog", posts_detail_path
+              - if user_signed_in?
+                %li=  link_to "Write an entry", new_post_path
+            - if user_signed_in?
+              .nav.pull-right
+                %li.dropdown
+                  %a.dropdown-toggle{"data-toggle" => "dropdown"}
+                    Welcome #{current_user.first_name + " "+ current_user.last_name}
+                    %b.caret
+                  %ul.dropdown-menu
+                    %a{:href => "#"}
+                      = link_to "Sign out", destroy_user_session_path, :method => :delete
+      .container
+        .row
+          .span7.offset1
+            .well.entries
+              = yield
+          .span3
+            .well
+              - random = Random.rand(Quote.count) + 1
+              = Quote.find(random).saying
+              %br/
+              %br/
+              %b= "- #{Quote.find(random).author}"
+            %hr/
+            %h3= "Recent Posts"
+            %ul
+              - Post.order("created_at DESC").limit(5).each do |post|
+                %p
+                  %li
+                    %u= link_to post.title, post_path(post)
+            %hr/
+            %h3= "Tags "
+            #tag_cloud
+              - tag_cloud Post.tag_counts, %w[s m l] do |tag, css_properties|
+                = link_to tag.name, tag_path(tag.name), :class => css_properties
+  %footer
+    .container
+      .row
+        .span10.offset1.blog-footer
+          - if Time.now.year <= 2012
+            = "Copyright © 2012 qle. All Rights Reserved."
+          - else
+            = "Copyright © 2012 - #{Time.now.year} qle. All Rights Reserved."

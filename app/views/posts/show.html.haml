@@ -1,0 +1,54 @@
+- content_for :title do
+  = @post.title
+- model_class = @post.class
+%p
+  %h2= @post.title
+%p
+  %b= "Posted on " + @post.created_at.strftime("%b %d %Y") + " by " + @post.user.username
+%p
+  %b= "Tags: "
+  = display_tags(@post.tags)
+%p
+  %pre= raw(@post.content)
+  %hr/
+%button#comment_headline.btn= "Wanna say something? Leave a comment."
+%br/
+%br/
+#comment.well
+  = form_for ([@post, Comment.new]) do |f|
+    .control-group
+      = f.label :name, :class => 'control-label'
+      .controls
+        = f.text_field :name, :class => 'text_field'
+        = "*"
+    .control-group
+      = f.label :email, :class => 'control-label'
+      .controls
+        = f.email_field :email
+        = " *"
+    .control-group
+      = f.label :body, :class => 'control-label'
+      .controls
+        = f.text_area :body, :rows => 4, :style => "width:70%; resize: none", :class => 'text_area'
+        = " *"
+    = f.submit nil, :class => 'btn btn-small'
+%p
+  %h3= "Comments"
+- @post.comments.each do |comment|
+  %p
+    %b= "On #{comment.created_at.strftime("%a, %b %d %Y")},"
+    %b= " #{comment.name} said: "
+    .comment
+      %pre= comment.body
+/ form to make a comment
+-#.form-actions
+- if user_signed_in? and @post.user == current_user
+  = link_to " Edit Post",                            |
+    edit_post_path(@post), :class => 'btn icon-edit' |
+  -#
+  = link_to " Delete Post",                                                                         |
+    post_path(@post),                                                                               |
+    :method => 'delete',                                                                            |
+    :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')), |
+    :class => 'btn btn-danger icon-trash'                                                           |
+= link_to " Back to Blog", posts_detail_path, :class => "btn btn-primary icon-backward"

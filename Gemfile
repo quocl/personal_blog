@@ -9,6 +9,7 @@ gem 'therubyracer'
 gem 'devise'
 gem 'friendly_id'
 gem 'acts-as-taggable-on'
+gem 'haml-rails'
 
 # Gems used only for assets and not required
 # in production environments by default.
