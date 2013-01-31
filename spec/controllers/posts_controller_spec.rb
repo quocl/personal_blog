@@ -49,7 +49,14 @@ describe PostsController do
         get :new
         response.should redirect_to(user_session_path)  
       end
-    end  
+    end
+    
+    describe 'GET show' do
+      it "should show the post" do
+        get :show, :id => post.id
+        assigns(:post).should eq(post)
+      end
+    end
   end
   
   describe "Login" do
@@ -63,7 +70,6 @@ describe PostsController do
     end
   
     describe "GET new" do
-      
       it "should create a un-saved post" do
         expect{get :new}.to change{Post.count}.by(0)
         assigns[:post].should_not be_persisted
