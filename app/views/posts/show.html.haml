@@ -10,10 +10,11 @@
   = display_tags(@post.tags)
 %p
   %pre= raw(@post.content)
-  %hr/
-%button#comment_headline.btn= "Wanna say something? Leave a comment."
-%br/
-%br/
+.fb-like{"data-send" => "false", "data-show-faces" => "false", "data-width" => "450"}
+%hr
+%p
+  %button#comment_headline.btn= "Wanna say something? Leave a comment."
+
 #comment.well
   = form_for ([@post, Comment.new]) do |f|
     .control-group
