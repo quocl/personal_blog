@@ -5,8 +5,16 @@ describe "User" do
   let!(:user){FactoryGirl.create(:user)}
   describe "sign in" do
     it "should allow user to sign in" do
-      visit '/users/sign_in'
-
+      visit '/users/sign_in'       
+      ["Email", "Password", "Sign in"].each do |content|
+        page.should have_content(content)
+      end
+      page.should_not have_content("Welcome")
+     ["Email", "Password"].zip([user.email, user.password]).each do |field, credential| 
+       fill_in field, :with => credential
+     end
+     click_button "Sign in"
+     page.should have_content("Welcome #{user.first_name} #{user.last_name}")
     end
   end
   

@@ -2,17 +2,17 @@
 
 This is a blog engine for personal use. You can grasp a copy of the source code, deploy it on your own and use it.
 
-1. To get the project, clone this project.
+* To get the project, clone this project.
 
-2. Deploy the app. For deployment, I recommend Heroku.com because it is free and it is very stable. You can find a tutorial
+* Deploy the app. For deployment, I recommend Heroku.com because it is free and it is very stable. You can find a tutorial
 about deploying Rails app on Heroku here:
        http://railsapps.github.com/rails-heroku-tutorial.html
-You can also use Amazon Web Service.
+	You can also use Amazon Web Service.
 
-3. Go to <tt>your_host_machine/users/sign_in</tt> to sign in. By default, there is a user with:
+* Go to <tt>your_host_machine/users/sign_in</tt> to sign in. By default, there is a user with:
 username = "username"; first name is "First", last name is "Last", email is "user@example.com", password is "password"
 
-4. Once login, you can edit your profile, i.e changing username, email, first name, last name and password.
+* Once login, you can edit your profile, i.e changing username, email, first name, last name and password.
 
 I assume you are familiar with Git. If not, you can look it up here:
        http://git-scm.com/
