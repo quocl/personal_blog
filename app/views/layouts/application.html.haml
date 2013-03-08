@@ -29,13 +29,15 @@
               - if user_signed_in?
                 %li=  link_to "Write an entry", new_post_path
             - if user_signed_in?
-              .nav.pull-right
+              .nav.pull-right                
                 %li.dropdown
-                  %a.dropdown-toggle{"data-toggle" => "dropdown"}
+                  %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
                     Welcome #{current_user.first_name + " "+ current_user.last_name}
                     %b.caret
                   %ul.dropdown-menu
-                    %a{:href => "#"}
+                    %li
+                      = link_to "My profile", edit_user_registration_path
+                    %li
                       = link_to "Sign out", destroy_user_session_path, :method => :delete
       .container
         .row

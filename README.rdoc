@@ -4,16 +4,15 @@ This is a blog engine for personal use. You can grasp a copy of the source code,
 
 1. To get the project, clone this project.
 
-2. Before deployment, go into <tt>app/models/user.rb</tt>  and uncomment the <tt>registerable</tt>  so that you can register for an account when the app is up and running. 
-3. Commit the change.
-4. After you finish deploying, go to <tt>your_host_machine/users/sign_up</tt> and sign up for an account. 
-5. Then, going to the source code, comment the  <tt>registerable</tt>  again if you don't want people to sign up and use your database. 
-6. Push the changes to your app server one more time.
-7. Go to <tt>your_host_machine/users/sign_in</tt> to sign in.
-
-For deployment, I recommend Heroku.com because it is free and it is very stable. You can find a tutorial
+2. Deploy the app. For deployment, I recommend Heroku.com because it is free and it is very stable. You can find a tutorial
 about deploying Rails app on Heroku here:
        http://railsapps.github.com/rails-heroku-tutorial.html
+You can also use Amazon Web Service.
+
+3. Go to <tt>your_host_machine/users/sign_in</tt> to sign in. By default, there is a user with:
+username = "username"; first name is "First", last name is "Last", email is "user@example.com", password is "password"
+
+4. Once login, you can edit your profile, i.e changing username, email, first name, last name and password.
 
 I assume you are familiar with Git. If not, you can look it up here:
        http://git-scm.com/

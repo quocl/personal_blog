@@ -16,5 +16,9 @@ quotes =[["Chance favors the prepared mind.", "Louis Pasteur"],
          ["Life is like riding a bicycle. To keep your balance you must keep moving.", "Albert Einstein"]]
          
 quotes.each do |quote|
-  Quote.create(:saying => quote[0], :author => quote[1])
+  Quote.find_or_create_by_saying(:saying => quote[0], :author => quote[1])
+end
+if User.count < 1
+  u = User.new(:username => 'username', :first_name => "First", :last_name => "Last", :email => "user@example.com", :password => "password", :password_confirmation => "password")
+  u.save!
 end
